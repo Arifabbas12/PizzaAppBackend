@@ -2,11 +2,9 @@ const express = require('express');
 const ServerConfig = require('./config/serverConfig');
 const cookieParser = require('cookie-parser')
 const connectDb = require('./config/dbConfig');
-const user = require('./schema/userSchema');
 const userRouter = require('./routes/userRoute');
 const cartRouter = require('./routes/cartRoute');
 const AuthRouter = require('./routes/authRoute');
-const { isLoggedIn } = require('./validation/authValidators');
 const uploader = require('./middlewares/multerMiddlewares');
 const cloudinary = require('./config/cloudinaryConfig');
 const fs = require('fs/promises');
@@ -23,7 +21,7 @@ app.use('/carts', cartRouter);
 app.use('/auth', AuthRouter);
 app.use('/products', productRouter);
 
-app.get("/ping", isLoggedIn,(req, res)=>{
+app.get("/ping",(req, res)=>{
     console.log(req.body);
     console.log(req.cookies);
     
