@@ -16,7 +16,7 @@ async function loginUser(authDetails){
     // 2. if the user found we need to compare plainIncomingPassword with hashedPassword
       const isPasswordValidate = await bcrypt.compare(plainPassword, user.passWord);
       if(!isPasswordValidate){
-        throw{ message: "Invalid password, plz try agail", statusCode: 401};
+        throw{ message: "Invalid password, plz try again", statusCode: 401};
       }
 
       const userRole = user.role ? user.role : 'USER'
